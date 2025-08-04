@@ -1,0 +1,449 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Cores do tema claro */
+  --background: oklch(1 0 0); /* Branco puro */
+  --foreground: oklch(0.1 0 0); /* Preto bem escuro, puxado pro cinza para títulos */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0); /* Verde esmeralda */
+  --primary-foreground: oklch(0.985 0 0); /* Branco */
+  --secondary: oklch(0.97 0 0); /* Cinza claro */
+  --secondary-foreground: oklch(0.205 0 0); /* Cinza escuro */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.3 0 0); /* Cinza mais escuro para melhor legibilidade no modo claro */
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325); /* Vermelho */
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0); /* Cinza claro para bordas (será removido de elementos glass) */
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Cores para o menu hambúrguer (modo claro) */
+  --menu-glass-bg-light: rgba(255, 255, 255, 0.8); /* Branco translúcido */
+  --menu-glass-text-light: oklch(0.145 0 0); /* Texto escuro */
+
+  /* Gradientes de fundo para o body (modo claro) */
+  --background-start: #f1f5f9; /* slate-100 */
+  --background-end: #e2e8f0; /* slate-200 */
+
+  /* Cores para as seções de categoria no modo claro (novas cores claras transparentes) */
+  --category-blue-bg: rgba(147, 197, 253, 0.2); /* blue-300/20 */
+  --category-green-bg: rgba(134, 239, 172, 0.2); /* green-300/20 */
+  --category-purple-bg: rgba(221, 214, 254, 0.2); /* purple-300/20 */
+  --category-orange-bg: rgba(253, 186, 116, 0.2); /* orange-300/20 */
+  --category-red-bg: rgba(252, 165, 165, 0.2); /* red-300/20 */
+  --category-yellow-bg: rgba(253, 224, 71, 0.2); /* yellow-300/20 */
+  --category-human-rights-bg: rgba(107, 114, 128, 0.2); /* gray-500/20 para Direitos Humanos */
+  --badge-human-rights-bg: #6b7280; /* gray-600 para badge Direitos Humanos */
+  --category-power-bg: rgba(109, 40, 217, 0.2); /* purple-700/20 para Poder */
+  --badge-power-bg: #7c3aed; /* purple-600 para badge Poder */
+
+  /* Cores para o Plenário no modo claro */
+  --plenario-bg: rgba(6, 95, 70, 0.1); /* emerald-900/10 */
+  --plenario-bg-hover: rgba(6, 95, 70, 0.15); /* emerald-900/15 */
+  --plenario-border: rgba(5, 150, 105, 0.2); /* emerald-600/20 */
+  --plenario-text-light: oklch(0.25 0.1 140); /* Novo: Um verde esmeralda profundo para texto principal */
+  --plenario-text-medium: oklch(0.15 0.08 140); /* Novo: Um verde esmeralda ainda mais escuro para sub-títulos/detalhes */
+
+  /* Cores para glassmorphism (modo claro) - sem bordas visíveis */
+  --glass-bg-md: rgba(255, 255, 255, 0.9);
+  --glass-border: transparent; /* Borda transparente */
+  --glass-bg-xl: rgba(255, 255, 255, 0.5);
+}
+
+.dark {
+  /* Cores do tema escuro (Preto Espacial) */
+  --background: oklch(0 0 0); /* Preto puro */
+  --foreground: oklch(0.985 0 0); /* Branco quase puro */
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0); /* Cinza claro para legibilidade no modo escuro */
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0); /* Cinza escuro para bordas (será removido de elementos glass) */
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+
+  /* Cores para o menu hambúrguer (modo escuro - esverdeado espacial) */
+  --menu-glass-bg-dark: rgba(16, 30, 20, 0.6); /* Verde escuro translúcido */
+  --menu-glass-text-dark: #34d399; /* Texto verde esmeralda */
+
+  /* Gradientes de fundo para o body (modo escuro - preto puro) */
+  --background-start: #000000; /* Preto puro */
+  --background-end: #000000; /* Preto puro */
+
+  /* Cores para as seções de categoria no modo escuro (novas cores claras transparentes) */
+  --category-blue-bg: rgba(147, 197, 253, 0.2); /* blue-300/20 */
+  --category-green-bg: rgba(134, 239, 172, 0.2); /* green-300/20 */
+  --category-purple-bg: rgba(221, 214, 254, 0.2); /* purple-300/20 */
+  --category-orange-bg: rgba(253, 186, 116, 0.2); /* orange-300/20 */
+  --category-red-bg: rgba(252, 165, 165, 0.2); /* red-300/20 */
+  --category-yellow-bg: rgba(253, 224, 71, 0.2); /* yellow-300/20 */
+  --category-human-rights-bg: rgba(31, 41, 55, 0.2); /* gray-800/20 para Direitos Humanos */
+  --badge-human-rights-bg: #4b5563; /* gray-700 para badge Direitos Humanos */
+  --category-power-bg: rgba(109, 40, 217, 0.3); /* purple-700/30 para Poder */
+  --badge-power-bg: #a78bfa; /* purple-400 para badge Poder */
+
+  /* Cores para o Plenário no modo escuro */
+  --plenario-bg: rgba(6, 95, 70, 0.3); /* emerald-900/30 */
+  --plenario-bg-hover: rgba(6, 95, 70, 0.4); /* emerald-900/40 */
+  --plenario-border: rgba(5, 150, 105, 0.2); /* emerald-600/20 */
+  --plenario-text-light: oklch(0.75 0.1 140); /* Novo: Um verde esmeralda claro para texto principal */
+  --plenario-text-medium: oklch(0.85 0.12 140); /* Novo: Um verde esmeralda mais brilhante para sub-títulos/detalhes */
+
+  /* Cores para glassmorphism (modo escuro) - sem bordas visíveis */
+  --glass-bg-md: rgba(0, 0, 0, 0.9); /* Mais escuro para o header e hero */
+  --glass-border: transparent; /* Borda transparente */
+  --glass-bg-xl: rgba(0, 0, 0, 0.9); /* Mais escuro para o header e hero */
+
+  /* Nova variável para o fundo preto do header no modo escuro */
+  --header-bg-dark: oklch(0.05 0 0); /* Cinza muito escuro para o header */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: oklch(0.646 0.222 41.116);
+  --color-chart-2: oklch(0.6 0.118 184.704);
+  --color-chart-3: oklch(0.398 0.07 227.392);
+  --color-chart-4: oklch(0.828 0.189 84.429);
+  --color-chart-5: oklch(0.769 0.188 70.08);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply outline-ring/50; /* Mantém o outline de foco, mas remove bordas padrão */
+  }
+  body {
+    background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    @apply text-foreground;
+  }
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 45s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Transições suaves para mudança de tema */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ajustes de texto para garantir que as cores do tema sejam usadas */
+/* Redefinindo text-white e text-gray-900 para serem cores sólidas */
+.text-white {
+  color: oklch(1 0 0); /* Pure white */
+}
+.dark .text-white {
+  color: oklch(1 0 0); /* Pure white */
+}
+
+.text-gray-900 {
+  color: oklch(0 0 0); /* Pure black for light mode */
+}
+.dark .text-gray-900 {
+  color: oklch(1 0 0); /* Pure white for dark mode */
+}
+
+.text-gray-700 {
+  color: oklch(0.2 0 0); /* Dark gray for light mode */
+}
+.dark .text-gray-700 {
+  color: oklch(0.8 0 0); /* Light gray for dark mode */
+}
+
+.text-gray-600 {
+  color: oklch(0.3 0 0); /* Medium gray for light mode */
+}
+.dark .text-gray-600 {
+  color: oklch(0.7 0 0); /* Medium-light gray for dark mode */
+}
+
+/* Outras classes de cinza para garantir consistência */
+.text-gray-200 {
+  color: oklch(0.8 0 0); /* Light gray for light mode */
+}
+.dark .text-gray-200 {
+  color: oklch(0.2 0 0); /* Dark gray for dark mode */
+}
+
+.text-gray-300 {
+  color: oklch(0.7 0 0); /* Medium-light gray for light mode */
+}
+.dark .text-gray-300 {
+  color: oklch(0.3 0 0); /* Medium-dark gray for dark mode */
+}
+
+.text-gray-400 {
+  color: oklch(0.6 0 0); /* Medium gray for light mode */
+}
+.dark .text-gray-400 {
+  color: oklch(0.4 0 0); /* Medium-dark gray for dark mode */
+}
+
+/* Ajustes para backgrounds com transparência */
+.bg-white\/10 {
+  background-color: var(--glass-bg-md);
+}
+.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.08); /* Ajustado para melhor contraste no dark mode */
+}
+
+.bg-white\/15 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.dark .bg-white\/15 {
+  background-color: rgba(0, 0, 0, 0.85); /* Mais escuro para elementos gerais no dark mode */
+}
+
+.bg-white\/30 {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.dark .bg-white\/30 {
+  background-color: rgba(0, 0, 0, 0.9); /* Mais escuro para elementos gerais no dark mode */
+}
+
+.bg-white\/40 {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.dark .bg-white\/40 {
+  background-color: rgba(0, 0, 0, 0.9); /* Mais escuro para elementos gerais no dark mode */
+}
+/* Ajustes para bordas - AGORA TRANSPARENTES */
+.border-white\/20 {
+  border-color: transparent; /* Removido o contorno visível */
+}
+.dark .border-white\/20 {
+  border-color: transparent; /* Removido o contorno visível */
+}
+
+.border-gray-200 {
+  border-color: transparent; /* Removido o contorno visível */
+}
+.dark .border-gray-200 {
+  border-color: transparent; /* Removido o contorno visível */
+}
+
+/* Ajustes para hover states */
+.hover\:bg-white\/10:hover {
+  background-color: rgba(15, 23, 42, 0.1);
+}
+.dark .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Mais escuro no hover para dark mode */
+}
+
+.hover\:bg-white\/15:hover {
+  background-color: rgba(15, 23, 42, 0.15);
+}
+.dark .hover\:bg-white\/15:hover {
+  background-color: rgba(0, 0, 0, 0.95); /* Mais escuro no hover para dark mode */
+}
+
+.hover\:bg-white\/20:hover {
+  background-color: rgba(15, 23, 42, 0.2);
+}
+.dark .hover\:bg-white\/20:hover {
+  background-color: rgba(0, 0, 0, 1); /* Preto total no hover para dark mode */
+}
+
+/* Ajustes específicos para seções coloridas */
+.bg-blue-900\/20 {
+  background-color: var(--category-blue-bg);
+}
+.bg-green-900\/20 {
+  background-color: var(--category-green-bg);
+}
+.bg-purple-900\/20 {
+  background-color: var(--category-purple-bg);
+}
+.bg-orange-900\/20 {
+  background-color: var(--category-orange-bg);
+}
+.bg-red-900\/20 {
+  background-color: var(--category-red-bg);
+}
+.bg-yellow-900\/20 {
+  background-color: var(--category-yellow-bg);
+}
+.bg-category-human-rights {
+  background-color: var(--category-human-rights-bg);
+}
+.bg-badge-human-rights {
+  background-color: var(--badge-human-rights-bg);
+}
+.bg-category-power {
+  background-color: var(--category-power-bg);
+}
+.bg-badge-power {
+  background-color: var(--badge-power-bg);
+}
+
+/* Estilo para a badge LGBTQIAPN+ */
+.badge-lgbtqiapn-plus {
+  background: linear-gradient(
+    to right,
+    #e40303 /* Vermelho */,
+    #ff8c00 /* Laranja */,
+    #ffed00 /* Amarelo */,
+    #008026 /* Verde */,
+    #004dff /* Azul */,
+    #750787 /* Violeta */
+  );
+  color: white; /* Texto branco para contraste */
+  border: none; /* Remover borda padrão */
+}
+
+/* Placeholder para imagens no tema claro */
+:root:not(.dark) img[src*="placeholder"] {
+  filter: brightness(0.9) contrast(1.1);
+}
+/* Melhorias para a barra de notícias */
+.news-ticker-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-ticker-gradient {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  background: linear-gradient(to right, var(--destructive) 0%, var(--destructive) 60%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Melhorias para o toggle theme */
+.theme-toggle-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Garantir que os ícones Lucide fiquem centralizados */
+.theme-toggle-icon svg {
+  display: block !important;
+  margin: auto !important;
+}
+
+/* Transição mais suave para o toggle */
+button[role="switch"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button[role="switch"] span {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
